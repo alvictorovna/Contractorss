@@ -1,0 +1,101 @@
+﻿@using Contractorss.ViewModels
+@model BuildingViewModel
+@addTagHelper "*, Contractorss"
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+.
+    <p>
+        <a asp-action="Create">Добавить запись</a>
+    </p>
+    <h2>Материалы</h2>
+
+    <form method="get">
+        <div class="form-inline">
+            <label class="control-label">Название: </label>
+            @Html.TextBox("NameMaterial", Model.FilterViewModel.SelectedName, htmlAttributes: new { @class = "form-control" })
+
+            <label class="control-label">Стройподрядчик: </label>
+            @Html.DropDownList("contr", Model.FilterViewModel.Contractors as SelectList,
+                htmlAttributes: new { @class = "form-control" })
+
+            <input type="submit" value="Найти" class="btn btn-default" />
+        </div>
+    </form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index"
+                   asp-route-sortBuild="@(Model.SortViewModel.BuildNameSort)"
+                   asp-route-nameMaterial="@(Model.FilterViewModel.SelectedName)"
+                   asp-route-build="@(Model.FilterViewModel.SelectedContr)">Название</a>
+            </th>
+            <th>
+                <a asp-action="Index"
+                   asp-route-sortBuild="@(Model.SortViewModel.VolumSort)"
+                   asp-route-nameMaterial="@(Model.FilterViewModel.SelectedName)"
+                   asp-route-build="@(Model.FilterViewModel.SelectedContr)">Количество</a>
+            </th>
+            <th>
+                <a asp-action="Index"
+                   asp-route-sortBuild="@(Model.SortViewModel.ContractSort)"
+                   asp-route-nameMaterial="@(Model.FilterViewModel.SelectedName)"
+                   asp-route-build="@(Model.FilterViewModel.SelectedContr)">Подрядчик</a>
+            </th>
+            <th>
+                <a asp-action="Index"
+                   asp-route-sortBuild="@(Model.SortViewModel.ManufacSort)"
+                   asp-route-nameMaterial="@(Model.FilterViewModel.SelectedName)"
+                   asp-route-build="@(Model.FilterViewModel.SelectedContr)">Производитель</a>
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.BuildingMaterials) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameMaterial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VolumePurchaseQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContractorIdNavigation.NameCompany)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ManufacturerIdNavigation.ManufacturerName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.BuildingMaterialId">Изменение</a> |
+                <a asp-action="Details" asp-route-id="@item.BuildingMaterialId">Просмотр</a> |
+                <a asp-action="Delete" asp-route-id="@item.BuildingMaterialId">Удаление</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+    
+    <page-link page-model="Model.PageViewModel" page-action="Index"
+               page-url-nameMaterial="@(Model.FilterViewModel.SelectedName)"
+               page-url-build="@(Model.FilterViewModel.SelectedContr)"
+               page-url-sortBuild="@(Model.SortViewModel.Current)">
+
+    </page-link>
+
+  
+</body>
+</html>

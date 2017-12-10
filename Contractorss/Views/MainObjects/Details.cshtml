@@ -1,0 +1,63 @@
+﻿@model Contractorss.MainObject
+
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+<div>
+    <h4>MainObject</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NameObject)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NameObject)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ConclusionContract)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ConclusionContract)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryObject)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryObject)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateInputObject)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateInputObject)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ContractorIdNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ContractorIdNavigation.NameCompany)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerIdNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CustomerIdNavigation.CompanyName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.MainObjectId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+</body>
+</html>

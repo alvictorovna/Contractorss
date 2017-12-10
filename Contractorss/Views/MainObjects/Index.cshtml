@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Contractorss.MainObject>
+
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+    <h2>MainObjects</h2>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NameObject)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ConclusionContract)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DeliveryObject)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateInputObject)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContractorIdNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerIdNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameObject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConclusionContract)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeliveryObject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateInputObject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContractorIdNavigation.NameCompany)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerIdNavigation.CompanyName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.MainObjectId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.MainObjectId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.MainObjectId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>

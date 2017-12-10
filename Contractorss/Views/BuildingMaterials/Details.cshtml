@@ -1,0 +1,51 @@
+﻿@model Contractorss.BuildingMaterial
+
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Просмотр</title>
+</head>
+<body>
+
+<div>
+    <h4>Материалы</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NameMaterial)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NameMaterial)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.VolumePurchaseQuantity)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.VolumePurchaseQuantity)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ContractorIdNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ContractorIdNavigation.NameCompany)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ManufacturerIdNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ManufacturerIdNavigation.ManufacturerName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.BuildingMaterialId">Редактировать</a> |
+    <a asp-action="Index">Назад</a>
+</div>
+</body>
+</html>

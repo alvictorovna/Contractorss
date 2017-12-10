@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Contractorss.ListWork>
+
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+    <h2>ListWorks</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MainObjectIdNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypesJobIdNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MainObjectIdNavigation.NameObject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypesJobIdNavigation.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ListWorkId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ListWorkId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ListWorkId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>

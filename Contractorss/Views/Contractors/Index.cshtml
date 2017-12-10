@@ -1,0 +1,51 @@
+﻿@using Contractorss.ViewModels
+@model BuildingViewModel
+@addTagHelper "*, Contractorss"
+
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+    <h2>Contractors</h2>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    <a asp-action="Index" asp-route-sortOrder="@ViewBag.NameSort">
+                        NameCompany
+                    </a>
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Contractor) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameCompany)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ContractorId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ContractorId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ContractorId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+    <page-link page-model="Model.PageViewModel" page-action="Index"></page-link>
+
+</body>
+</html>

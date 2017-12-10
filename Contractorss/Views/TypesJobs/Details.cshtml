@@ -1,0 +1,51 @@
+﻿@model Contractorss.TypesJob
+
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+<div>
+    <h4>TypesJob</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ContractorIdNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ContractorIdNavigation.NameCompany)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LicenseIdNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LicenseIdNavigation.Number)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.TypesJobId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+</body>
+</html>

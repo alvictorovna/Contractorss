@@ -1,0 +1,42 @@
+﻿@model Contractorss.ListWork
+
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ListWork</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MainObjectIdNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MainObjectIdNavigation.MainObjectId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TypesJobIdNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TypesJobIdNavigation.TypesJobId)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ListWorkId" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>
+</body>
+</html>
